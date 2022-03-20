@@ -68,6 +68,11 @@ class ExtremeCliHandler(AbstractModeConfigurator):
     def config_mode(self):
         return self.modes[CommandMode]
 
+    def _on_session_start(self, session, logger):
+        cli_service = CliServiceImpl(
+            session=session, requested_command_mode=self.enable_mode, logger=logger
+        )
+        cli_service.send_command("disable cli paging")
     #
     # def _on_session_start(self, session, logger):
     #     """Send default commands to configure/clear session outputs.

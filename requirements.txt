@@ -3,3 +3,4 @@ cloudshell-cli
 cloudshell-shell-flows
 cloudshell-snmp-autoload
 cloudshell-shell-flows
+cloudshell-shell-connectivity-flow

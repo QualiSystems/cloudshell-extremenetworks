@@ -25,7 +25,7 @@ from cloudshell.extremenetworks.autoload.extremenetworks_generic_snmp_autoload i
 class ExtremenetworksSnmpAutoloadFlow(AbstractAutoloadFlow):
 
     EXTREMENETWORKS_MIBS_FOLDER = os.path.join(os.path.dirname(__file__), os.pardir, "mibs")
-    DEVICE_NAMES_MAP_FILE = os.path.join(EXTREMENETWORKS_MIBS_FOLDER, "device_names_map.csv")
+    # DEVICE_NAMES_MAP_FILE = os.path.join(EXTREMENETWORKS_MIBS_FOLDER, "device_names_map.csv")
 
     def __init__(self, logger, snmp_handler):
         super(ExtremenetworksSnmpAutoloadFlow, self).__init__(logger)
@@ -34,6 +34,11 @@ class ExtremenetworksSnmpAutoloadFlow(AbstractAutoloadFlow):
     def _autoload_flow(self, supported_os, resource_model):
         # todo implement autoload flow here
         with self._snmp_handler.get_service() as snmp_service:
+            # snmp_service.add_mib_folder_path(self.EXTREMENETWORKS_MIBS_FOLDER)
+            # snmp_service.load_mib_tables(
+            #     ["CISCO-PRODUCTS-MIB", "CISCO-ENTITY-VENDORTYPE-OID-MIB"]
+            # )
+
             snmp_autoload = ExtremenetworksGenericSNMPAutoload(snmp_service, self._logger)
             return snmp_autoload.discover(supported_os, resource_model)
 

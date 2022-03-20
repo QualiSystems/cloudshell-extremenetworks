@@ -8,8 +8,7 @@ from collections import OrderedDict
 from cloudshell.cli.service.command_mode import CommandMode
 
 class DefaultCommandMode(CommandMode):
-    PROMPT = r".*"
-    # PROMPT = r">\s*$"
+    PROMPT = r"EXOS-VM\.\d+\s#"
     ENTER_COMMAND = ""
     EXIT_COMMAND = ""
 
@@ -157,3 +156,7 @@ class DefaultCommandMode(CommandMode):
 # CommandMode.RELATIONS_DICT = {
 #     DefaultCommandMode: {EnableCommandMode: {ConfigCommandMode: {}}}
 # }
+
+CommandMode.RELATIONS_DICT = {
+    DefaultCommandMode: {}
+}
